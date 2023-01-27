@@ -1,7 +1,7 @@
-package com.tr.poc.graphql.service.impl
+package com.tr.poc.service.impl
 
-import com.tr.poc.graphql.model.Agent
-import com.tr.poc.graphql.service.AgentStorageService
+import com.tr.poc.model.Agent
+import com.tr.poc.service.AgentStorageService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service

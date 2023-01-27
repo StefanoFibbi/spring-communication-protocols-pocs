@@ -1,4 +1,4 @@
-package com.tr.poc.graphql.service
+package com.tr.poc.service
 
 import com.tr.poc.graphql.model.Ticket
 

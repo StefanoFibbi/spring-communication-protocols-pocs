@@ -1,0 +1,30 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.tr.poc.grpc;
+
+//import "grpc/agent.proto";
+//import "grpc/user.proto";
+
+message Ticket {
+    string id = 1;
+    string title = 2;
+    string description  = 3;
+    string category  = 4;
+    //User issuer = 5;
+    //Agent owner = 6;
+}
+
+message TicketRequest {
+  string id = 1;
+}
+
+message TicketsRequest {}
+
+message TicketsResponse {
+  repeated Ticket ticket = 1;
+}
+
+service TicketService {
+  rpc tickets(TicketsRequest) returns(TicketsResponse);
+  rpc ticketById(TicketRequest) returns(Ticket);
+}

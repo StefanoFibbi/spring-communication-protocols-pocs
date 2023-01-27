@@ -1,4 +1,4 @@
-package com.tr.poc.graphql.model
+package com.tr.poc.model
 
 data class Ticket(
     val id: String,

@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.tr.poc.grpc;
+
+message User {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+}
+
+message UserRequest {
+  string id = 1;
+}
+
+message UsersRequest {}
+
+message UsersResponse {
+  repeated User user = 1;
+}
+
+service UserService {
+  rpc users(UsersRequest) returns(UsersResponse);
+  rpc userById(UserRequest) returns(User);
+}

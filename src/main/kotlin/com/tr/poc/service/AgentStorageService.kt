@@ -1,6 +1,6 @@
-package com.tr.poc.graphql.service
+package com.tr.poc.service
 
-import com.tr.poc.graphql.model.Agent
+import com.tr.poc.model.Agent
 
 interface AgentStorageService {
     fun allAgents(): Collection<Agent>

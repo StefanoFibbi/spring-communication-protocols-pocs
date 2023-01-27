@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.tr.poc.grpc;
+
+message Agent {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string fullName = 4;
+}
+
+message AgentRequest {
+  string id = 1;
+}
+
+message AgentsRequest {}
+
+message AgentsResponse {
+  repeated Agent agent = 1;
+}
+
+service AgentService {
+  rpc agents(AgentsRequest) returns(AgentsResponse);
+  rpc agentById(AgentRequest) returns(Agent);
+}
