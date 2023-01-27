@@ -1,0 +1,8 @@
+type Ticket {
+    id: ID!
+    title: String!
+    description: String
+    category: String!
+    issuer: User!
+    owner: Agent
+}

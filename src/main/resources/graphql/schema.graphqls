@@ -1,0 +1,24 @@
+type Query {
+    users: [User]!
+    userById(id: String): User
+
+    tickets: [Ticket]
+    ticketById(id: String): Ticket
+
+    ticketPage(pageNum: Int!, pageSize: Int!): [Ticket]
+    agentTicketPage(pageNum: Int!, pageSize: Int!, owner: String): [Ticket]
+}
+
+type Mutation {
+    createAgent(firstName: String!, lastName: String!): Agent!
+
+    createUser(firstName: String!, lastName: String!): User!
+
+    createTicket(
+        title: String!,
+        description: String,
+        category: String!,
+        issuer: String!
+        owner: String
+    ): Ticket!
+}
