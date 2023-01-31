@@ -1,7 +1,7 @@
 package com.tr.poc.graphql.controller
 
-import com.tr.poc.graphql.model.User
-import com.tr.poc.graphql.service.UserStorageService
+import com.tr.poc.model.User
+import com.tr.poc.service.UserStorageService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.graphql.data.method.annotation.Argument

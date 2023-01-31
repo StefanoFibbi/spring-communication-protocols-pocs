@@ -11,9 +11,11 @@ plugins {
 	id("com.google.protobuf") version "0.9.2"
 }
 
+// gRPC
 ext["protobufVersion"] = "3.21.9"
 ext["grpcVersion"] = "1.52.1"
 ext["grpcKotlinVersion"] = "1.3.0"
+ext["coroutinesVersion"] = "1.6.2"
 
 group = "com.tr.poc"
 version = "0.0.1-SNAPSHOT"
@@ -41,6 +43,8 @@ dependencies {
 	api("com.google.protobuf:protobuf-java-util:${rootProject.ext["protobufVersion"]}")
 	api("com.google.protobuf:protobuf-kotlin:${rootProject.ext["protobufVersion"]}")
 	api("io.grpc:grpc-kotlin-stub:${rootProject.ext["grpcKotlinVersion"]}")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:${rootProject.ext["coroutinesVersion"]}")
+	runtimeOnly("io.grpc:grpc-netty:${rootProject.ext["grpcVersion"]}")
 
 	protobuf(files("src/main/resources/grpc/"))
 }
@@ -52,14 +56,20 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+tasks.clean {
+	delete("$projectDir/src/generated")
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+// gRPC
 protobuf {
 	protoc {
 		artifact = "com.google.protobuf:protoc:${rootProject.ext["protobufVersion"]}"
 	}
+	generatedFilesBaseDir = "$projectDir/src/generated"
 	plugins {
 		id("grpc") {
 			artifact = "io.grpc:protoc-gen-grpc-java:${rootProject.ext["grpcVersion"]}"

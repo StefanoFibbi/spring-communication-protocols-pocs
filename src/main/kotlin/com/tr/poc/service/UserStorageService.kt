@@ -1,6 +1,6 @@
 package com.tr.poc.service
 
-import com.tr.poc.graphql.model.User
+import com.tr.poc.model.User
 
 interface UserStorageService {
     fun allUsers(): Collection<User>

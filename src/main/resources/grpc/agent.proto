@@ -13,13 +13,47 @@ message AgentRequest {
   string id = 1;
 }
 
-message AgentsRequest {}
+message AgentsRequest {
+  int32 page = 1;
+  int32 size = 2;
+}
 
 message AgentsResponse {
   repeated Agent agent = 1;
 }
 
+message ConversationRequest {
+  string id = 1;
+  string message = 2;
+  string timestamp = 3;
+}
+
+message ConversationListenerRequest {
+  string id = 1;
+}
+
+message Message {
+  string message = 1;
+  string timestamp = 2;
+}
+
 service AgentService {
-  rpc agents(AgentsRequest) returns(AgentsResponse);
+  // unidirectional streaming
+  // the FE opens a connection with the BE in order to retrieve all agents
+  // this connection will retrieve and stream the agents one by one
+  rpc agents(AgentsRequest) returns(stream Agent);
+
+  // unary call
+  // similar to REST where a request is done and a response is expected
+  // retrieves a customer by ID and returns given agent
   rpc agentById(AgentRequest) returns(Agent);
+
+  // bidirectional streaming
+  // new messages are sent by the agent and new messages sent by the customer are
+  // caught and sent back to the FE
+  rpc conversation(stream ConversationRequest) returns(stream Message);
+
+  // unidirectional streaming
+  // the FE starts listening for any new messages that are sent to the conversation
+  rpc conversationListener(ConversationListenerRequest) returns(stream Message);
 }

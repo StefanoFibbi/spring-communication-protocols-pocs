@@ -1,6 +1,6 @@
 package com.tr.poc.service
 
-import com.tr.poc.graphql.model.Ticket
+import com.tr.poc.model.Ticket
 
 interface TicketStorageService {
     fun allTickets(): Collection<Ticket>

@@ -1,7 +1,7 @@
 package com.tr.poc.graphql.controller
 
-import com.tr.poc.graphql.model.Ticket
-import com.tr.poc.graphql.service.TicketStorageService
+import com.tr.poc.model.Ticket
+import com.tr.poc.service.TicketStorageService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.graphql.data.method.annotation.Argument

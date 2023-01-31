@@ -7,14 +7,18 @@ import com.tr.poc.grpc.AgentRequest
 import com.tr.poc.grpc.AgentServiceGrpcKt
 import com.tr.poc.grpc.AgentsRequest
 import com.tr.poc.grpc.AgentsResponse
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.map
 
 object AgentMapper {
-    fun agentsResponse(agents: Collection<Agent>) = AgentsResponse
+    fun agentsResponse(agents: Collection<Agent>): AgentsResponse = AgentsResponse
         .newBuilder()
         .addAllAgent(agents.map { this.toGrpc(it) }.asIterable())
         .build()
 
-    fun agentResponse(agent: Agent) = toGrpc(agent)
+    fun agentResponse(agent: Agent?): AgentGrpc = agent?.let { toGrpc(it) }
+        ?: AgentGrpc.newBuilder().build()
 
     private fun toGrpc(agent: Agent): AgentGrpc = AgentGrpc
         .newBuilder()
@@ -28,12 +32,11 @@ object AgentMapper {
 class AgentsService(
     val service: AgentStorageService,
 ): AgentServiceGrpcKt.AgentServiceCoroutineImplBase() {
-    override suspend fun agents(request: AgentsRequest): AgentsResponse {
-        val agents = service.allAgents()
-        return AgentMapper.agentsResponse(agents)
+    override fun agents(request: AgentsRequest): Flow<AgentGrpc> {
+        return service.allAgents().map { AgentMapper.agentResponse(it) }.asFlow()
     }
 
-    override suspend fun agentById(request: AgentRequest): com.tr.poc.grpc.Agent {
+    override suspend fun agentById(request: AgentRequest): AgentGrpc {
         val agent = service.agentById(request.id)
         return AgentMapper.agentResponse(agent)
     }
