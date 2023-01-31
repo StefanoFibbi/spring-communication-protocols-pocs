@@ -44,24 +44,44 @@ public interface TicketOrBuilder extends
       getDescriptionBytes();
 
   /**
-   * <pre>
-   *User issuer = 5;
-   *Agent owner = 6;
-   * </pre>
-   *
    * <code>string category = 4;</code>
    * @return The category.
    */
   java.lang.String getCategory();
   /**
-   * <pre>
-   *User issuer = 5;
-   *Agent owner = 6;
-   * </pre>
-   *
    * <code>string category = 4;</code>
    * @return The bytes for category.
    */
   com.google.protobuf.ByteString
       getCategoryBytes();
+
+  /**
+   * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+   * @return Whether the issuer field is set.
+   */
+  boolean hasIssuer();
+  /**
+   * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+   * @return The issuer.
+   */
+  com.tr.poc.grpc.User getIssuer();
+  /**
+   * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+   */
+  com.tr.poc.grpc.UserOrBuilder getIssuerOrBuilder();
+
+  /**
+   * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+   * @return Whether the owner field is set.
+   */
+  boolean hasOwner();
+  /**
+   * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+   * @return The owner.
+   */
+  com.tr.poc.grpc.Agent getOwner();
+  /**
+   * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+   */
+  com.tr.poc.grpc.AgentOrBuilder getOwnerOrBuilder();
 }

@@ -1,8 +1,10 @@
 package com.tr.poc.graphql.controller
 
-import com.tr.poc.model.Agent
-import com.tr.poc.model.Ticket
-import com.tr.poc.model.User
+import com.tr.poc.graphql.mappers.AgentMapper
+import com.tr.poc.graphql.mappers.UserMapper
+import com.tr.poc.graphql.model.AgentDto
+import com.tr.poc.graphql.model.TicketDto
+import com.tr.poc.graphql.model.UserDto
 import com.tr.poc.service.AgentStorageService
 import com.tr.poc.service.UserStorageService
 import org.springframework.graphql.data.method.annotation.SchemaMapping
@@ -14,9 +16,15 @@ class TicketSchemaController(
     private val agentStorageService: AgentStorageService
 ) {
     @SchemaMapping
-    fun issuer(ticket: Ticket): User? = userStorageService.userById(ticket.issuer)
+    fun issuer(ticket: TicketDto): UserDto? = userStorageService.userById(ticket.issuer).let {
+        UserMapper.toUserDto(it)
+    }
 
     @SchemaMapping
-    fun owner(ticket: Ticket): Agent? = ticket.owner?.let { agentStorageService.agentById(it) }
+    fun owner(ticket: TicketDto): AgentDto? = ticket.owner?.let {
+        agentStorageService.agentById(it).let { agent ->
+            AgentMapper.toAgentDto(agent)
+        }
+    }
 
 }

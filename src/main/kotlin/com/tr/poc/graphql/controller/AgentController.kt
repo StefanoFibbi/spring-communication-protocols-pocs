@@ -1,6 +1,7 @@
 package com.tr.poc.graphql.controller
 
-import com.tr.poc.model.Agent
+import com.tr.poc.graphql.mappers.AgentMapper
+import com.tr.poc.graphql.model.AgentDto
 import com.tr.poc.service.AgentStorageService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -16,17 +17,19 @@ class AgentController(
     private val log: Logger = LoggerFactory.getLogger(javaClass)
 
     @QueryMapping(name = "agents")
-    fun fetchAllAgents(): Collection<Agent> {
+    fun fetchAllAgents(): Collection<AgentDto> {
         log.info("[AgentController] All agents")
-        return agentStorageService.allAgents()
+        val agents = agentStorageService.allAgents()
+        return AgentMapper.toAgentsDto(agents)
     }
 
     @QueryMapping
-    fun agentById(@Argument id: String, @Argument name: String): Agent? {
+    fun agentById(@Argument id: String, @Argument name: String): AgentDto? {
         log.info("[AgentController] Get agent by id")
-        return agentStorageService.agentById(id)
+        val agent = agentStorageService.agentById(id)
+        return AgentMapper.toAgentDto(agent)
     }
 
     @SchemaMapping
-    fun fullName(agent: Agent): String = "${agent.firstName} ${agent.lastName}"
+    fun fullName(agentDto: AgentDto): String = "${agentDto.firstName} ${agentDto.lastName}"
 }

@@ -1,6 +1,8 @@
 package com.tr.poc.service.impl
 
+import com.tr.poc.model.Agent
 import com.tr.poc.model.Ticket
+import com.tr.poc.model.User
 import com.tr.poc.service.TicketStorageService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -18,18 +20,28 @@ class InMemoryTicketStorageService : TicketStorageService {
                 title = "",
                 description = null,
                 category = "Dummy category",
-                issuer = "USR-001",
+                issuer = User(
+                    id = "USR-001",
+                    firstName = "Cesar",
+                    lastName = "WHOKNOWS"
+                ),
                 owner = null,
-                post = emptyList()
             ),
             Ticket(
                 id = "TICKET-002",
                 title = "",
                 description = null,
                 category = "Dummy category",
-                issuer = "USR-001",
-                owner = "AGENT-002",
-                post = emptyList()
+                issuer = User(
+                    id = "USR-001",
+                    firstName = "Cesar",
+                    lastName = "WHOKNOWS"
+                ),
+                owner = Agent(
+                    id = "AGENT-002",
+                    firstName = "Fabio",
+                    lastName = "Biondi"
+                )
             ),
         )
     }

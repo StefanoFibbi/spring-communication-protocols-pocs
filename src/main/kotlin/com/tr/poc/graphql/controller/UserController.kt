@@ -1,6 +1,7 @@
 package com.tr.poc.graphql.controller
 
-import com.tr.poc.model.User
+import com.tr.poc.graphql.mappers.UserMapper
+import com.tr.poc.graphql.model.UserDto
 import com.tr.poc.service.UserStorageService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -16,20 +17,23 @@ class UserController(
     private val log: Logger = LoggerFactory.getLogger(javaClass)
 
     @QueryMapping
-    fun users(): Collection<User> {
+    fun users(): Collection<UserDto> {
         log.info("[UserController] All users")
-        return userStorageService.allUsers()
+        val users = userStorageService.allUsers()
+        return UserMapper.toUsersDto(users)
     }
 
     @QueryMapping
-    fun userById(@Argument id: String): User? {
+    fun userById(@Argument id: String): UserDto? {
         log.info("[UserController] Get user by id")
-        return userStorageService.userById(id)
+        val user = userStorageService.userById(id)
+        return UserMapper.toUserDto(user)
     }
 
     @MutationMapping
-    fun createUser(@Argument firstName: String, @Argument lastName: String): User {
+    fun createUser(@Argument firstName: String, @Argument lastName: String): UserDto {
         log.info("[UserController] Create user")
-        return userStorageService.createUser(firstName, lastName)
+        val user = userStorageService.createUser(firstName, lastName)
+        return UserMapper.toUserDto(user)!!
     }
 }

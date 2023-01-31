@@ -43,27 +43,33 @@ public final class TicketOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014ticket.proto\022\017com.tr.poc.grpc\"J\n\006Ticke" +
-      "t\022\n\n\002id\030\001 \001(\t\022\r\n\005title\030\002 \001(\t\022\023\n\013descript" +
-      "ion\030\003 \001(\t\022\020\n\010category\030\004 \001(\t\"\033\n\rTicketReq" +
-      "uest\022\n\n\002id\030\001 \001(\t\"\020\n\016TicketsRequest\":\n\017Ti" +
-      "cketsResponse\022\'\n\006ticket\030\001 \003(\0132\027.com.tr.p" +
-      "oc.grpc.Ticket2\244\001\n\rTicketService\022L\n\007tick" +
-      "ets\022\037.com.tr.poc.grpc.TicketsRequest\032 .c" +
-      "om.tr.poc.grpc.TicketsResponse\022E\n\nticket" +
-      "ById\022\036.com.tr.poc.grpc.TicketRequest\032\027.c" +
-      "om.tr.poc.grpc.TicketB\002P\001b\006proto3"
+      "\n\014ticket.proto\022\017com.tr.poc.grpc\032\013agent.p" +
+      "roto\032\nuser.proto\"\230\001\n\006Ticket\022\n\n\002id\030\001 \001(\t\022" +
+      "\r\n\005title\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\020\n\010c" +
+      "ategory\030\004 \001(\t\022%\n\006issuer\030\005 \001(\0132\025.com.tr.p" +
+      "oc.grpc.User\022%\n\005owner\030\006 \001(\0132\026.com.tr.poc" +
+      ".grpc.Agent\"\033\n\rTicketRequest\022\n\n\002id\030\001 \001(\t" +
+      "\"N\n\016TicketsRequest\022\023\n\006issuer\030\001 \001(\tH\000\210\001\001\022" +
+      "\022\n\005owner\030\002 \001(\tH\001\210\001\001B\t\n\007_issuerB\010\n\006_owner" +
+      "\":\n\017TicketsResponse\022\'\n\006ticket\030\001 \003(\0132\027.co" +
+      "m.tr.poc.grpc.Ticket2\244\001\n\rTicketService\022L" +
+      "\n\007tickets\022\037.com.tr.poc.grpc.TicketsReque" +
+      "st\032 .com.tr.poc.grpc.TicketsResponse\022E\n\n" +
+      "ticketById\022\036.com.tr.poc.grpc.TicketReque" +
+      "st\032\027.com.tr.poc.grpc.TicketB\002P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.tr.poc.grpc.AgentOuterClass.getDescriptor(),
+          com.tr.poc.grpc.UserOuterClass.getDescriptor(),
         });
     internal_static_com_tr_poc_grpc_Ticket_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_com_tr_poc_grpc_Ticket_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tr_poc_grpc_Ticket_descriptor,
-        new java.lang.String[] { "Id", "Title", "Description", "Category", });
+        new java.lang.String[] { "Id", "Title", "Description", "Category", "Issuer", "Owner", });
     internal_static_com_tr_poc_grpc_TicketRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_tr_poc_grpc_TicketRequest_fieldAccessorTable = new
@@ -75,13 +81,15 @@ public final class TicketOuterClass {
     internal_static_com_tr_poc_grpc_TicketsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tr_poc_grpc_TicketsRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Issuer", "Owner", "Issuer", "Owner", });
     internal_static_com_tr_poc_grpc_TicketsResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_com_tr_poc_grpc_TicketsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tr_poc_grpc_TicketsResponse_descriptor,
         new java.lang.String[] { "Ticket", });
+    com.tr.poc.grpc.AgentOuterClass.getDescriptor();
+    com.tr.poc.grpc.UserOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

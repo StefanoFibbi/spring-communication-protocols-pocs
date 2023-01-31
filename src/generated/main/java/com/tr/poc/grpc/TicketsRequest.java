@@ -16,6 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private TicketsRequest() {
+    issuer_ = "";
+    owner_ = "";
   }
 
   @java.lang.Override
@@ -43,6 +45,99 @@ private static final long serialVersionUID = 0L;
             com.tr.poc.grpc.TicketsRequest.class, com.tr.poc.grpc.TicketsRequest.Builder.class);
   }
 
+  private int bitField0_;
+  public static final int ISSUER_FIELD_NUMBER = 1;
+  private volatile java.lang.Object issuer_;
+  /**
+   * <code>optional string issuer = 1;</code>
+   * @return Whether the issuer field is set.
+   */
+  @java.lang.Override
+  public boolean hasIssuer() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <code>optional string issuer = 1;</code>
+   * @return The issuer.
+   */
+  @java.lang.Override
+  public java.lang.String getIssuer() {
+    java.lang.Object ref = issuer_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      issuer_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string issuer = 1;</code>
+   * @return The bytes for issuer.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getIssuerBytes() {
+    java.lang.Object ref = issuer_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      issuer_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int OWNER_FIELD_NUMBER = 2;
+  private volatile java.lang.Object owner_;
+  /**
+   * <code>optional string owner = 2;</code>
+   * @return Whether the owner field is set.
+   */
+  @java.lang.Override
+  public boolean hasOwner() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>optional string owner = 2;</code>
+   * @return The owner.
+   */
+  @java.lang.Override
+  public java.lang.String getOwner() {
+    java.lang.Object ref = owner_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      owner_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string owner = 2;</code>
+   * @return The bytes for owner.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getOwnerBytes() {
+    java.lang.Object ref = owner_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      owner_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -57,6 +152,12 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (((bitField0_ & 0x00000001) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, issuer_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, owner_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -66,6 +167,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (((bitField0_ & 0x00000001) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, issuer_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, owner_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -81,6 +188,16 @@ private static final long serialVersionUID = 0L;
     }
     com.tr.poc.grpc.TicketsRequest other = (com.tr.poc.grpc.TicketsRequest) obj;
 
+    if (hasIssuer() != other.hasIssuer()) return false;
+    if (hasIssuer()) {
+      if (!getIssuer()
+          .equals(other.getIssuer())) return false;
+    }
+    if (hasOwner() != other.hasOwner()) return false;
+    if (hasOwner()) {
+      if (!getOwner()
+          .equals(other.getOwner())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -92,6 +209,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    if (hasIssuer()) {
+      hash = (37 * hash) + ISSUER_FIELD_NUMBER;
+      hash = (53 * hash) + getIssuer().hashCode();
+    }
+    if (hasOwner()) {
+      hash = (37 * hash) + OWNER_FIELD_NUMBER;
+      hash = (53 * hash) + getOwner().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -220,6 +345,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      issuer_ = "";
+      bitField0_ = (bitField0_ & ~0x00000001);
+      owner_ = "";
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -246,6 +375,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.tr.poc.grpc.TicketsRequest buildPartial() {
       com.tr.poc.grpc.TicketsRequest result = new com.tr.poc.grpc.TicketsRequest(this);
+      int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        to_bitField0_ |= 0x00000001;
+      }
+      result.issuer_ = issuer_;
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        to_bitField0_ |= 0x00000002;
+      }
+      result.owner_ = owner_;
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -294,6 +434,16 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.tr.poc.grpc.TicketsRequest other) {
       if (other == com.tr.poc.grpc.TicketsRequest.getDefaultInstance()) return this;
+      if (other.hasIssuer()) {
+        bitField0_ |= 0x00000001;
+        issuer_ = other.issuer_;
+        onChanged();
+      }
+      if (other.hasOwner()) {
+        bitField0_ |= 0x00000002;
+        owner_ = other.owner_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -320,6 +470,16 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 10: {
+              issuer_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
+            case 18: {
+              owner_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -333,6 +493,173 @@ private static final long serialVersionUID = 0L;
       } finally {
         onChanged();
       } // finally
+      return this;
+    }
+    private int bitField0_;
+
+    private java.lang.Object issuer_ = "";
+    /**
+     * <code>optional string issuer = 1;</code>
+     * @return Whether the issuer field is set.
+     */
+    public boolean hasIssuer() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional string issuer = 1;</code>
+     * @return The issuer.
+     */
+    public java.lang.String getIssuer() {
+      java.lang.Object ref = issuer_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        issuer_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string issuer = 1;</code>
+     * @return The bytes for issuer.
+     */
+    public com.google.protobuf.ByteString
+        getIssuerBytes() {
+      java.lang.Object ref = issuer_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        issuer_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string issuer = 1;</code>
+     * @param value The issuer to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIssuer(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+      issuer_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string issuer = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIssuer() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      issuer_ = getDefaultInstance().getIssuer();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string issuer = 1;</code>
+     * @param value The bytes for issuer to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIssuerBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000001;
+      issuer_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object owner_ = "";
+    /**
+     * <code>optional string owner = 2;</code>
+     * @return Whether the owner field is set.
+     */
+    public boolean hasOwner() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string owner = 2;</code>
+     * @return The owner.
+     */
+    public java.lang.String getOwner() {
+      java.lang.Object ref = owner_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        owner_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string owner = 2;</code>
+     * @return The bytes for owner.
+     */
+    public com.google.protobuf.ByteString
+        getOwnerBytes() {
+      java.lang.Object ref = owner_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        owner_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string owner = 2;</code>
+     * @param value The owner to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOwner(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+      owner_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string owner = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOwner() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      owner_ = getDefaultInstance().getOwner();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string owner = 2;</code>
+     * @param value The bytes for owner to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOwnerBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000002;
+      owner_ = value;
+      onChanged();
       return this;
     }
     @java.lang.Override

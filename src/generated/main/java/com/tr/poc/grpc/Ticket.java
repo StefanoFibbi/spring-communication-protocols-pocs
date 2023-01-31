@@ -164,11 +164,6 @@ private static final long serialVersionUID = 0L;
   public static final int CATEGORY_FIELD_NUMBER = 4;
   private volatile java.lang.Object category_;
   /**
-   * <pre>
-   *User issuer = 5;
-   *Agent owner = 6;
-   * </pre>
-   *
    * <code>string category = 4;</code>
    * @return The category.
    */
@@ -186,11 +181,6 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <pre>
-   *User issuer = 5;
-   *Agent owner = 6;
-   * </pre>
-   *
    * <code>string category = 4;</code>
    * @return The bytes for category.
    */
@@ -207,6 +197,58 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int ISSUER_FIELD_NUMBER = 5;
+  private com.tr.poc.grpc.User issuer_;
+  /**
+   * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+   * @return Whether the issuer field is set.
+   */
+  @java.lang.Override
+  public boolean hasIssuer() {
+    return issuer_ != null;
+  }
+  /**
+   * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+   * @return The issuer.
+   */
+  @java.lang.Override
+  public com.tr.poc.grpc.User getIssuer() {
+    return issuer_ == null ? com.tr.poc.grpc.User.getDefaultInstance() : issuer_;
+  }
+  /**
+   * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+   */
+  @java.lang.Override
+  public com.tr.poc.grpc.UserOrBuilder getIssuerOrBuilder() {
+    return getIssuer();
+  }
+
+  public static final int OWNER_FIELD_NUMBER = 6;
+  private com.tr.poc.grpc.Agent owner_;
+  /**
+   * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+   * @return Whether the owner field is set.
+   */
+  @java.lang.Override
+  public boolean hasOwner() {
+    return owner_ != null;
+  }
+  /**
+   * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+   * @return The owner.
+   */
+  @java.lang.Override
+  public com.tr.poc.grpc.Agent getOwner() {
+    return owner_ == null ? com.tr.poc.grpc.Agent.getDefaultInstance() : owner_;
+  }
+  /**
+   * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+   */
+  @java.lang.Override
+  public com.tr.poc.grpc.AgentOrBuilder getOwnerOrBuilder() {
+    return getOwner();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -235,6 +277,12 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(category_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, category_);
     }
+    if (issuer_ != null) {
+      output.writeMessage(5, getIssuer());
+    }
+    if (owner_ != null) {
+      output.writeMessage(6, getOwner());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -255,6 +303,14 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(category_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, category_);
+    }
+    if (issuer_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, getIssuer());
+    }
+    if (owner_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, getOwner());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -279,6 +335,16 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDescription())) return false;
     if (!getCategory()
         .equals(other.getCategory())) return false;
+    if (hasIssuer() != other.hasIssuer()) return false;
+    if (hasIssuer()) {
+      if (!getIssuer()
+          .equals(other.getIssuer())) return false;
+    }
+    if (hasOwner() != other.hasOwner()) return false;
+    if (hasOwner()) {
+      if (!getOwner()
+          .equals(other.getOwner())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -298,6 +364,14 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getDescription().hashCode();
     hash = (37 * hash) + CATEGORY_FIELD_NUMBER;
     hash = (53 * hash) + getCategory().hashCode();
+    if (hasIssuer()) {
+      hash = (37 * hash) + ISSUER_FIELD_NUMBER;
+      hash = (53 * hash) + getIssuer().hashCode();
+    }
+    if (hasOwner()) {
+      hash = (37 * hash) + OWNER_FIELD_NUMBER;
+      hash = (53 * hash) + getOwner().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -434,6 +508,18 @@ private static final long serialVersionUID = 0L;
 
       category_ = "";
 
+      if (issuerBuilder_ == null) {
+        issuer_ = null;
+      } else {
+        issuer_ = null;
+        issuerBuilder_ = null;
+      }
+      if (ownerBuilder_ == null) {
+        owner_ = null;
+      } else {
+        owner_ = null;
+        ownerBuilder_ = null;
+      }
       return this;
     }
 
@@ -464,6 +550,16 @@ private static final long serialVersionUID = 0L;
       result.title_ = title_;
       result.description_ = description_;
       result.category_ = category_;
+      if (issuerBuilder_ == null) {
+        result.issuer_ = issuer_;
+      } else {
+        result.issuer_ = issuerBuilder_.build();
+      }
+      if (ownerBuilder_ == null) {
+        result.owner_ = owner_;
+      } else {
+        result.owner_ = ownerBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -528,6 +624,12 @@ private static final long serialVersionUID = 0L;
         category_ = other.category_;
         onChanged();
       }
+      if (other.hasIssuer()) {
+        mergeIssuer(other.getIssuer());
+      }
+      if (other.hasOwner()) {
+        mergeOwner(other.getOwner());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -574,6 +676,20 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 34
+            case 42: {
+              input.readMessage(
+                  getIssuerFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
+              break;
+            } // case 42
+            case 50: {
+              input.readMessage(
+                  getOwnerFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
+              break;
+            } // case 50
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -820,11 +936,6 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object category_ = "";
     /**
-     * <pre>
-     *User issuer = 5;
-     *Agent owner = 6;
-     * </pre>
-     *
      * <code>string category = 4;</code>
      * @return The category.
      */
@@ -841,11 +952,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     *User issuer = 5;
-     *Agent owner = 6;
-     * </pre>
-     *
      * <code>string category = 4;</code>
      * @return The bytes for category.
      */
@@ -863,11 +969,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     *User issuer = 5;
-     *Agent owner = 6;
-     * </pre>
-     *
      * <code>string category = 4;</code>
      * @param value The category to set.
      * @return This builder for chaining.
@@ -883,11 +984,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *User issuer = 5;
-     *Agent owner = 6;
-     * </pre>
-     *
      * <code>string category = 4;</code>
      * @return This builder for chaining.
      */
@@ -898,11 +994,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *User issuer = 5;
-     *Agent owner = 6;
-     * </pre>
-     *
      * <code>string category = 4;</code>
      * @param value The bytes for category to set.
      * @return This builder for chaining.
@@ -917,6 +1008,244 @@ private static final long serialVersionUID = 0L;
       category_ = value;
       onChanged();
       return this;
+    }
+
+    private com.tr.poc.grpc.User issuer_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.tr.poc.grpc.User, com.tr.poc.grpc.User.Builder, com.tr.poc.grpc.UserOrBuilder> issuerBuilder_;
+    /**
+     * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+     * @return Whether the issuer field is set.
+     */
+    public boolean hasIssuer() {
+      return issuerBuilder_ != null || issuer_ != null;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+     * @return The issuer.
+     */
+    public com.tr.poc.grpc.User getIssuer() {
+      if (issuerBuilder_ == null) {
+        return issuer_ == null ? com.tr.poc.grpc.User.getDefaultInstance() : issuer_;
+      } else {
+        return issuerBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+     */
+    public Builder setIssuer(com.tr.poc.grpc.User value) {
+      if (issuerBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        issuer_ = value;
+        onChanged();
+      } else {
+        issuerBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+     */
+    public Builder setIssuer(
+        com.tr.poc.grpc.User.Builder builderForValue) {
+      if (issuerBuilder_ == null) {
+        issuer_ = builderForValue.build();
+        onChanged();
+      } else {
+        issuerBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+     */
+    public Builder mergeIssuer(com.tr.poc.grpc.User value) {
+      if (issuerBuilder_ == null) {
+        if (issuer_ != null) {
+          issuer_ =
+            com.tr.poc.grpc.User.newBuilder(issuer_).mergeFrom(value).buildPartial();
+        } else {
+          issuer_ = value;
+        }
+        onChanged();
+      } else {
+        issuerBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+     */
+    public Builder clearIssuer() {
+      if (issuerBuilder_ == null) {
+        issuer_ = null;
+        onChanged();
+      } else {
+        issuer_ = null;
+        issuerBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+     */
+    public com.tr.poc.grpc.User.Builder getIssuerBuilder() {
+      
+      onChanged();
+      return getIssuerFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+     */
+    public com.tr.poc.grpc.UserOrBuilder getIssuerOrBuilder() {
+      if (issuerBuilder_ != null) {
+        return issuerBuilder_.getMessageOrBuilder();
+      } else {
+        return issuer_ == null ?
+            com.tr.poc.grpc.User.getDefaultInstance() : issuer_;
+      }
+    }
+    /**
+     * <code>.com.tr.poc.grpc.User issuer = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.tr.poc.grpc.User, com.tr.poc.grpc.User.Builder, com.tr.poc.grpc.UserOrBuilder> 
+        getIssuerFieldBuilder() {
+      if (issuerBuilder_ == null) {
+        issuerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.tr.poc.grpc.User, com.tr.poc.grpc.User.Builder, com.tr.poc.grpc.UserOrBuilder>(
+                getIssuer(),
+                getParentForChildren(),
+                isClean());
+        issuer_ = null;
+      }
+      return issuerBuilder_;
+    }
+
+    private com.tr.poc.grpc.Agent owner_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.tr.poc.grpc.Agent, com.tr.poc.grpc.Agent.Builder, com.tr.poc.grpc.AgentOrBuilder> ownerBuilder_;
+    /**
+     * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+     * @return Whether the owner field is set.
+     */
+    public boolean hasOwner() {
+      return ownerBuilder_ != null || owner_ != null;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+     * @return The owner.
+     */
+    public com.tr.poc.grpc.Agent getOwner() {
+      if (ownerBuilder_ == null) {
+        return owner_ == null ? com.tr.poc.grpc.Agent.getDefaultInstance() : owner_;
+      } else {
+        return ownerBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+     */
+    public Builder setOwner(com.tr.poc.grpc.Agent value) {
+      if (ownerBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        owner_ = value;
+        onChanged();
+      } else {
+        ownerBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+     */
+    public Builder setOwner(
+        com.tr.poc.grpc.Agent.Builder builderForValue) {
+      if (ownerBuilder_ == null) {
+        owner_ = builderForValue.build();
+        onChanged();
+      } else {
+        ownerBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+     */
+    public Builder mergeOwner(com.tr.poc.grpc.Agent value) {
+      if (ownerBuilder_ == null) {
+        if (owner_ != null) {
+          owner_ =
+            com.tr.poc.grpc.Agent.newBuilder(owner_).mergeFrom(value).buildPartial();
+        } else {
+          owner_ = value;
+        }
+        onChanged();
+      } else {
+        ownerBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+     */
+    public Builder clearOwner() {
+      if (ownerBuilder_ == null) {
+        owner_ = null;
+        onChanged();
+      } else {
+        owner_ = null;
+        ownerBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+     */
+    public com.tr.poc.grpc.Agent.Builder getOwnerBuilder() {
+      
+      onChanged();
+      return getOwnerFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+     */
+    public com.tr.poc.grpc.AgentOrBuilder getOwnerOrBuilder() {
+      if (ownerBuilder_ != null) {
+        return ownerBuilder_.getMessageOrBuilder();
+      } else {
+        return owner_ == null ?
+            com.tr.poc.grpc.Agent.getDefaultInstance() : owner_;
+      }
+    }
+    /**
+     * <code>.com.tr.poc.grpc.Agent owner = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.tr.poc.grpc.Agent, com.tr.poc.grpc.Agent.Builder, com.tr.poc.grpc.AgentOrBuilder> 
+        getOwnerFieldBuilder() {
+      if (ownerBuilder_ == null) {
+        ownerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.tr.poc.grpc.Agent, com.tr.poc.grpc.Agent.Builder, com.tr.poc.grpc.AgentOrBuilder>(
+                getOwner(),
+                getParentForChildren(),
+                isClean());
+        owner_ = null;
+      }
+      return ownerBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

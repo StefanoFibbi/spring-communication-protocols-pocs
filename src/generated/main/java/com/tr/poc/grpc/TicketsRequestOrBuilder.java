@@ -6,4 +6,38 @@ package com.tr.poc.grpc;
 public interface TicketsRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:com.tr.poc.grpc.TicketsRequest)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>optional string issuer = 1;</code>
+   * @return Whether the issuer field is set.
+   */
+  boolean hasIssuer();
+  /**
+   * <code>optional string issuer = 1;</code>
+   * @return The issuer.
+   */
+  java.lang.String getIssuer();
+  /**
+   * <code>optional string issuer = 1;</code>
+   * @return The bytes for issuer.
+   */
+  com.google.protobuf.ByteString
+      getIssuerBytes();
+
+  /**
+   * <code>optional string owner = 2;</code>
+   * @return Whether the owner field is set.
+   */
+  boolean hasOwner();
+  /**
+   * <code>optional string owner = 2;</code>
+   * @return The owner.
+   */
+  java.lang.String getOwner();
+  /**
+   * <code>optional string owner = 2;</code>
+   * @return The bytes for owner.
+   */
+  com.google.protobuf.ByteString
+      getOwnerBytes();
 }

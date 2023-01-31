@@ -5,7 +5,6 @@ data class Ticket(
     val title: String,
     val description: String?,
     val category: String,
-    val issuer: String,
-    val owner: String?,
-    val post: Collection<Post>,
+    val issuer: User,
+    val owner: Agent?,
 )

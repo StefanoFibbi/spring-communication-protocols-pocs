@@ -21,6 +21,54 @@ object TicketsRequestKt {
     @kotlin.jvm.JvmSynthetic
     @kotlin.PublishedApi
     internal fun _build(): com.tr.poc.grpc.TicketsRequest = _builder.build()
+
+    /**
+     * <code>optional string issuer = 1;</code>
+     */
+    var issuer: kotlin.String
+      @JvmName("getIssuer")
+      get() = _builder.getIssuer()
+      @JvmName("setIssuer")
+      set(value) {
+        _builder.setIssuer(value)
+      }
+    /**
+     * <code>optional string issuer = 1;</code>
+     */
+    fun clearIssuer() {
+      _builder.clearIssuer()
+    }
+    /**
+     * <code>optional string issuer = 1;</code>
+     * @return Whether the issuer field is set.
+     */
+    fun hasIssuer(): kotlin.Boolean {
+      return _builder.hasIssuer()
+    }
+
+    /**
+     * <code>optional string owner = 2;</code>
+     */
+    var owner: kotlin.String
+      @JvmName("getOwner")
+      get() = _builder.getOwner()
+      @JvmName("setOwner")
+      set(value) {
+        _builder.setOwner(value)
+      }
+    /**
+     * <code>optional string owner = 2;</code>
+     */
+    fun clearOwner() {
+      _builder.clearOwner()
+    }
+    /**
+     * <code>optional string owner = 2;</code>
+     * @return Whether the owner field is set.
+     */
+    fun hasOwner(): kotlin.Boolean {
+      return _builder.hasOwner()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

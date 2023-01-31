@@ -1,6 +1,7 @@
 package com.tr.poc.graphql.controller
 
-import com.tr.poc.model.Ticket
+import com.tr.poc.graphql.mappers.TicketMapper
+import com.tr.poc.graphql.model.TicketDto
 import com.tr.poc.service.TicketStorageService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -15,15 +16,16 @@ class TicketController(
     private val log: Logger = LoggerFactory.getLogger(javaClass)
 
     @QueryMapping
-    fun tickets(): Collection<Ticket> {
+    fun tickets(): Collection<TicketDto> {
         log.info("[TicketController] All tickets")
-        return ticketStorageService.allTickets()
+        val tickets = ticketStorageService.allTickets()
+        return TicketMapper.toTicketsDto(tickets)
     }
 
     @QueryMapping
-    fun ticketById(@Argument id: String): Ticket? {
+    fun ticketById(@Argument id: String): TicketDto? {
         log.info("[TicketController] Get tickets by id")
-        return ticketStorageService.ticketById(id)
+        val ticket = ticketStorageService.ticketById(id)
+        return TicketMapper.toTicketDto(ticket)
     }
-
 }

@@ -16,6 +16,7 @@ ext["protobufVersion"] = "3.21.9"
 ext["grpcVersion"] = "1.52.1"
 ext["grpcKotlinVersion"] = "1.3.0"
 ext["coroutinesVersion"] = "1.6.2"
+ext["grpcBasePath"] = "$projectDir/src/generated"
 
 group = "com.tr.poc"
 version = "0.0.1-SNAPSHOT"
@@ -57,7 +58,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.clean {
-	delete("$projectDir/src/generated")
+	delete("${rootProject.ext["grpcBasePath"]}")
 }
 
 tasks.withType<Test> {
@@ -69,7 +70,7 @@ protobuf {
 	protoc {
 		artifact = "com.google.protobuf:protoc:${rootProject.ext["protobufVersion"]}"
 	}
-	generatedFilesBaseDir = "$projectDir/src/generated"
+	generatedFilesBaseDir = "${rootProject.ext["grpcBasePath"]}"
 	plugins {
 		id("grpc") {
 			artifact = "io.grpc:protoc-gen-grpc-java:${rootProject.ext["grpcVersion"]}"
